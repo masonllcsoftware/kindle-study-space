@@ -135,7 +135,7 @@ const Index = () => {
               ))}
             </>
           ) : (
-            courses?.slice(0, 3).map((course) => (
+            courses?.map((course) => (
               <CourseCard
                 key={course.id}
                 title={course.title}

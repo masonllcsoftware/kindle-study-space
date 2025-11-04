@@ -31,33 +31,6 @@ Built for clarity, security, and performance.
 
 ⸻
 
-⚙️ How to Edit This Code
-
-You can work on this project directly in your favorite IDE or code editor.
-
-Requirements
-	•	Node.js￼
-	•	npm or yarn
-
-Setup Steps
-
-# Step 1: Clone the repository
-git clone <YOUR_GIT_URL>
-
-# Step 2: Enter the project folder
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install dependencies
-npm install
-
-# Step 4: Start the development server
-npm run dev
-
-Your app will now be available locally at
-👉 http://localhost:5173 (default Vite port)
-
-⸻
-
 🧩 Folder Structure
 
 learning-app/

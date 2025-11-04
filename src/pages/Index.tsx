@@ -2,46 +2,28 @@ import { Button } from "@/components/ui/button";
 import { CourseCard } from "@/components/CourseCard";
 import { CategoryCard } from "@/components/CategoryCard";
 import { StatsCard } from "@/components/StatsCard";
-import { BookOpen, Code, Palette, Briefcase, TrendingUp, Award, Target, Users } from "lucide-react";
+import { Code, Palette, Briefcase, TrendingUp, BookOpen, Users, Award, Target } from "lucide-react";
+import { useCourses } from "@/hooks/useCourses";
+import { useCategories } from "@/hooks/useCategories";
+import { usePlatformStats } from "@/hooks/usePlatformStats";
 import heroImage from "@/assets/hero-learning.jpg";
-import codingImage from "@/assets/course-coding.jpg";
-import designImage from "@/assets/course-design.jpg";
-import businessImage from "@/assets/course-business.jpg";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const iconMap: Record<string, any> = {
+  Code,
+  Palette,
+  Briefcase,
+  TrendingUp,
+  BookOpen,
+  Users,
+  Award,
+  Target,
+};
 
 const Index = () => {
-  const categories = [
-    { title: "Programming", icon: Code, courseCount: 245, color: "bg-gradient-to-br from-primary to-[hsl(var(--primary-glow))]" },
-    { title: "Design", icon: Palette, courseCount: 189, color: "bg-gradient-to-br from-accent to-[hsl(35_95%_65%)]" },
-    { title: "Business", icon: Briefcase, courseCount: 167, color: "bg-gradient-to-br from-[hsl(220_75%_55%)] to-[hsl(220_85%_65%)]" },
-    { title: "Marketing", icon: TrendingUp, courseCount: 134, color: "bg-gradient-to-br from-[hsl(280_75%_55%)] to-[hsl(280_85%_65%)]" },
-  ];
-
-  const courses = [
-    {
-      title: "Full Stack Web Development",
-      description: "Master modern web development with React, Node.js, and MongoDB. Build production-ready applications from scratch.",
-      image: codingImage,
-      duration: "12 weeks",
-      students: 15420,
-      level: "Intermediate"
-    },
-    {
-      title: "UI/UX Design Masterclass",
-      description: "Learn to create stunning user interfaces and experiences. From wireframes to high-fidelity prototypes.",
-      image: designImage,
-      duration: "10 weeks",
-      students: 12350,
-      level: "Beginner"
-    },
-    {
-      title: "Business Strategy & Growth",
-      description: "Develop strategic thinking and learn proven frameworks to grow any business in competitive markets.",
-      image: businessImage,
-      duration: "8 weeks",
-      students: 9870,
-      level: "Advanced"
-    }
-  ];
+  const { data: categories, isLoading: categoriesLoading } = useCategories();
+  const { data: courses, isLoading: coursesLoading } = useCourses();
+  const { data: stats, isLoading: statsLoading } = usePlatformStats();
 
   return (
     <div className="min-h-screen bg-[var(--gradient-hero)]">
@@ -86,10 +68,26 @@ const Index = () => {
       {/* Stats Section */}
       <section className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatsCard title="Active Students" value="50K+" icon={Users} trend="+12% this month" />
-          <StatsCard title="Total Courses" value="500+" icon={BookOpen} trend="20 new this week" />
-          <StatsCard title="Success Rate" value="94%" icon={Target} trend="+5% increase" />
-          <StatsCard title="Certificates" value="25K+" icon={Award} trend="Growing daily" />
+          {statsLoading ? (
+            <>
+              {[1, 2, 3, 4].map((i) => (
+                <Skeleton key={i} className="h-32 w-full" />
+              ))}
+            </>
+          ) : (
+            stats?.map((stat) => {
+              const IconComponent = iconMap[stat.metric_icon];
+              return (
+                <StatsCard
+                  key={stat.id}
+                  title={stat.metric_name}
+                  value={stat.metric_value}
+                  icon={IconComponent}
+                  trend={stat.trend || undefined}
+                />
+              );
+            })
+          )}
         </div>
       </section>
 
@@ -100,9 +98,26 @@ const Index = () => {
           <p className="text-xl text-muted-foreground">Find the perfect course for your learning journey</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((category) => (
-            <CategoryCard key={category.title} {...category} />
-          ))}
+          {categoriesLoading ? (
+            <>
+              {[1, 2, 3, 4].map((i) => (
+                <Skeleton key={i} className="h-48 w-full" />
+              ))}
+            </>
+          ) : (
+            categories?.map((category) => {
+              const IconComponent = iconMap[category.icon_name];
+              return (
+                <CategoryCard
+                  key={category.id}
+                  title={category.title}
+                  icon={IconComponent}
+                  courseCount={category.course_count}
+                  color={category.color_class}
+                />
+              );
+            })
+          )}
         </div>
       </section>
 
@@ -113,9 +128,25 @@ const Index = () => {
           <p className="text-xl text-muted-foreground">Start with our most popular courses</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course) => (
-            <CourseCard key={course.title} {...course} />
-          ))}
+          {coursesLoading ? (
+            <>
+              {[1, 2, 3].map((i) => (
+                <Skeleton key={i} className="h-96 w-full" />
+              ))}
+            </>
+          ) : (
+            courses?.slice(0, 3).map((course) => (
+              <CourseCard
+                key={course.id}
+                title={course.title}
+                description={course.description}
+                image={course.image_url}
+                duration={course.duration}
+                students={course.student_count}
+                level={course.level}
+              />
+            ))
+          )}
         </div>
       </section>
 

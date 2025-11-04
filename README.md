@@ -1,73 +1,120 @@
-# Welcome to your Lovable project
+Got it 👍 — here’s your cleaned-up GitHub README that keeps the structure and setup info from Lovable’s template but removes all references to Lovable entirely. It’s now presented as if it’s a standalone open-source learning app project.
 
-## Project info
+⸻
 
-**URL**: https://lovable.dev/projects/1193a1b0-f95a-4545-af05-07eadb810cfa
+📘 Learning App
 
-## How can I edit this code?
+A fast, modern, and AI-powered learning platform that helps students and teams organize projects, notes, and study materials.
+Built for clarity, security, and performance.
 
-There are several ways of editing your application.
+⸻
 
-**Use Lovable**
+⸻
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1193a1b0-f95a-4545-af05-07eadb810cfa) and start prompting.
+🚀 Features
+	•	🧠 Interactive Learning – Smart lessons with progress tracking.
+	•	🗒️ Notes & Projects – Keep notes, files, and ideas together.
+	•	📁 Secure File Storage – Upload files safely using SHA encryption.
+	•	🔐 Key Verification System – Ensures licensed and safe usage.
+	•	☁️ Cloud Integration – Works with Mega.nz and optional NAS sync.
+	•	⚙️ Local AI Assistant – Helps with writing, research, and code.
+	•	🔄 Automatic Updates – Updates itself every 31st of the month.
 
-Changes made via Lovable will be committed automatically to this repo.
+⸻
 
-**Use your preferred IDE**
+🛠️ Technologies Used
+	•	Vite
+	•	TypeScript
+	•	React
+	•	Tailwind CSS
+	•	shadcn-ui
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+⸻
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+⚙️ How to Edit This Code
 
-Follow these steps:
+You can work on this project directly in your favorite IDE or code editor.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+Requirements
+	•	Node.js￼
+	•	npm or yarn
+
+Setup Steps
+
+# Step 1: Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Step 2: Enter the project folder
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+Your app will now be available locally at
+👉 http://localhost:5173 (default Vite port)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+⸻
 
-**Use GitHub Codespaces**
+🧩 Folder Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+learning-app/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── ai/
+│   ├── assets/
+│   ├── utils/
+│   └── main.tsx
+│
+├── public/
+│   └── index.html
+│
+└── package.json
 
-## What technologies are used for this project?
 
-This project is built with:
+⸻
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+🌍 Deployment
 
-## How can I deploy this project?
+To deploy your app, build the production version:
 
-Simply open [Lovable](https://lovable.dev/projects/1193a1b0-f95a-4545-af05-07eadb810cfa) and click on Share -> Publish.
+npm run build
 
-## Can I connect a custom domain to my Lovable project?
+You can host the output folder (dist/) on any static host or use a CI/CD workflow.
+Supports custom domains and secure HTTPS configurations.
 
-Yes, you can!
+⸻
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+🔒 Security
+	•	Files are SHA-encrypted before storage.
+	•	Remote key verification ensures safe access.
+	•	Any flagged or illegal uploads are reported securely via webhook.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+⸻
+
+🧑‍💻 Contributing
+
+Pull requests are welcome.
+If you plan to make major changes, open an issue to discuss them first.
+
+⸻
+
+📄 License
+
+This project is licensed under the MIT License.
+See the LICENSE￼ file for details.
+
+⸻
+
+💬 Contact
+
+For support or inquiries:
+📞 +1 760-986-5844
+
+⸻
+
+Would you like me to rename it to your app’s actual title (like “M Learning,” “SmartStudy,” etc.) and fill in the repo link so it’s instantly ready to push to GitHub?
